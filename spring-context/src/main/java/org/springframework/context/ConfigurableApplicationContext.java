@@ -40,6 +40,7 @@ import org.springframework.lang.Nullable;
  * @author Chris Beams
  * @author Sam Brannen
  * @since 03.11.2003
+ * spring boot 的SpringApplication.run()返回的就是这个
  */
 public interface ConfigurableApplicationContext extends ApplicationContext, Lifecycle, Closeable {
 

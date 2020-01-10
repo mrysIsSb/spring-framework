@@ -50,6 +50,7 @@ import org.springframework.util.Assert;
  * @see AnnotatedBeanDefinitionReader
  * @see ClassPathBeanDefinitionScanner
  * @see org.springframework.context.support.GenericXmlApplicationContext
+ * 创建一个用于注解配置的bean容器
  */
 public class AnnotationConfigApplicationContext extends GenericApplicationContext implements AnnotationConfigRegistry {
 
@@ -82,8 +83,10 @@ public class AnnotationConfigApplicationContext extends GenericApplicationContex
 	 * from the given component classes and automatically refreshing the context.
 	 * @param componentClasses one or more component classes &mdash; for example,
 	 * {@link Configuration @Configuration} classes
+	 * 先开始就由这个构造方法开始，componentClasses 传了一个 main 的class
 	 */
 	public AnnotationConfigApplicationContext(Class<?>... componentClasses) {
+		//调用一个空的构造函数
 		this();
 		register(componentClasses);
 		refresh();
