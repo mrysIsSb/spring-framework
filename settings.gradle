@@ -1,5 +1,7 @@
 pluginManagement {
 	repositories {
+		mavenLocal()
+		maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/' }
 		gradlePluginPortal()
 		maven { url 'https://repo.spring.io/plugins-release' }
 	}
