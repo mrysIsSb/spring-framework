@@ -27,6 +27,8 @@ import org.springframework.util.Assert;
  * Extension of the {@link org.springframework.beans.factory.support.GenericBeanDefinition}
  * class, adding support for annotation metadata exposed through the
  * {@link AnnotatedBeanDefinition} interface.
+ * 对{@link GenericBeanDefinition} 的拓展，实现{@link AnnotatedBeanDefinition} 接口
+ *
  *
  * <p>This GenericBeanDefinition variant is mainly useful for testing code that expects
  * to operate on an AnnotatedBeanDefinition, for example strategy implementations

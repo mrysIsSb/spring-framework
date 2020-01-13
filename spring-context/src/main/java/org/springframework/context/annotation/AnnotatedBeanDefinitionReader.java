@@ -36,6 +36,7 @@ import org.springframework.util.Assert;
 /**
  * Convenient adapter for programmatic registration of bean classes.
  *
+ * 这里写是用来代替 {@link ClassPathBeanDefinitionScanner} 但是在{@link AnnotationConfigApplicationContext} 它用了两个
  * <p>This is an alternative to {@link ClassPathBeanDefinitionScanner}, applying
  * the same resolution of annotations but for explicitly registered classes only.
  *
@@ -45,6 +46,8 @@ import org.springframework.util.Assert;
  * @author Phillip Webb
  * @since 3.0
  * @see AnnotationConfigApplicationContext#register
+ *
+ *	读取注解的Bean定义读取器
  */
 public class AnnotatedBeanDefinitionReader {
 
@@ -126,6 +129,8 @@ public class AnnotatedBeanDefinitionReader {
 
 
 	/**
+	 * 注册要处理的主键类
+	 * 该操作是幂等的
 	 * Register one or more component classes to be processed.
 	 * <p>Calls to {@code register} are idempotent; adding the same
 	 * component class more than once has no additional effect.
@@ -243,7 +248,7 @@ public class AnnotatedBeanDefinitionReader {
 	 * @param supplier a callback for creating an instance of the bean
 	 * (may be {@code null})
 	 * @param customizers one or more callbacks for customizing the factory's
-	 * {@link BeanDefinition}, e.g. setting a lazy-init or primary flag
+	 * {@link BeanDefinition}, e.g. setting a lazy-init or primary flag bean定义定制器
 	 * @since 5.0
 	 */
 	private <T> void doRegisterBean(Class<T> beanClass, @Nullable String name,

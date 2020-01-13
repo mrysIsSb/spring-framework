@@ -88,6 +88,7 @@ public class AnnotationConfigApplicationContext extends GenericApplicationContex
 	public AnnotationConfigApplicationContext(Class<?>... componentClasses) {
 		//调用一个空的构造函数
 		this();
+		//注册类
 		register(componentClasses);
 		refresh();
 	}
@@ -156,10 +157,14 @@ public class AnnotationConfigApplicationContext extends GenericApplicationContex
 	 * {@link Configuration @Configuration} classes
 	 * @see #scan(String...)
 	 * @see #refresh()
+	 * 注册和处理多个class
 	 */
 	@Override
 	public void register(Class<?>... componentClasses) {
 		Assert.notEmpty(componentClasses, "At least one component class must be specified");
+		/**
+		 * reader={@link AnnotatedBeanDefinitionReader}
+		 */
 		this.reader.register(componentClasses);
 	}
 
