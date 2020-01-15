@@ -86,7 +86,8 @@ public class MutablePropertyValues implements PropertyValues, Serializable {
 	/**
 	 * Construct a new MutablePropertyValues object from a Map.
 	 * @param original a Map with property values keyed by property name Strings
-	 * @see #addPropertyValues(Map)
+	 * @see #addPropertyValues(Map
+	 * key 为name val为val
 	 */
 	public MutablePropertyValues(@Nullable Map<?, ?> original) {
 		// We can optimize this because it's all new:

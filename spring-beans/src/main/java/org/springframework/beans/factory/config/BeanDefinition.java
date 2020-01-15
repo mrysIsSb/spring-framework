@@ -256,7 +256,7 @@ public interface BeanDefinition extends AttributeAccessor, BeanMetadataElement {
 	 * Return the property values to be applied to a new instance of the bean.
 	 * <p>The returned instance can be modified during bean factory post-processing.
 	 * @return the MutablePropertyValues object (never {@code null})
-	 * todo 看到这
+	 *
 	 */
 	MutablePropertyValues getPropertyValues();
 
@@ -271,6 +271,7 @@ public interface BeanDefinition extends AttributeAccessor, BeanMetadataElement {
 	/**
 	 * Set the name of the initializer method.
 	 * @since 5.1
+	 * 设置初始方法名称
 	 */
 	void setInitMethodName(@Nullable String initMethodName);
 
@@ -284,6 +285,7 @@ public interface BeanDefinition extends AttributeAccessor, BeanMetadataElement {
 	/**
 	 * Set the name of the destroy method.
 	 * @since 5.1
+	 * 设置销毁调用的方法
 	 */
 	void setDestroyMethodName(@Nullable String destroyMethodName);
 
@@ -338,6 +340,7 @@ public interface BeanDefinition extends AttributeAccessor, BeanMetadataElement {
 	 * @return the resolvable type (potentially {@link ResolvableType#NONE})
 	 * @since 5.2
 	 * @see ConfigurableBeanFactory#getMergedBeanDefinition
+	 * todo 看到这
 	 */
 	ResolvableType getResolvableType();
 

@@ -71,6 +71,7 @@ public interface PropertyValues extends Iterable<PropertyValue> {
 	 * Return the property value with the given name, if any.
 	 * @param propertyName the name to search for
 	 * @return the property value, or {@code null} if none
+	 * 根据名称获取
 	 */
 	@Nullable
 	PropertyValue getPropertyValue(String propertyName);
@@ -82,6 +83,7 @@ public interface PropertyValues extends Iterable<PropertyValue> {
 	 * @return the updated or new properties.
 	 * Return empty PropertyValues if there are no changes.
 	 * @see Object#equals
+	 * 还不知道干什么的
 	 */
 	PropertyValues changesSince(PropertyValues old);
 
