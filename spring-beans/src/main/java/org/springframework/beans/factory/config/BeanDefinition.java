@@ -240,7 +240,7 @@ public interface BeanDefinition extends AttributeAccessor, BeanMetadataElement {
 	 * <p>The returned instance can be modified during bean factory post-processing.
 	 * @return the ConstructorArgumentValues object (never {@code null})
 	 *
-	 * todo 看到这
+	 * 构造函数的参数
 	 */
 	ConstructorArgumentValues getConstructorArgumentValues();
 
@@ -256,6 +256,7 @@ public interface BeanDefinition extends AttributeAccessor, BeanMetadataElement {
 	 * Return the property values to be applied to a new instance of the bean.
 	 * <p>The returned instance can be modified during bean factory post-processing.
 	 * @return the MutablePropertyValues object (never {@code null})
+	 * todo 看到这
 	 */
 	MutablePropertyValues getPropertyValues();
 

@@ -186,6 +186,7 @@ public class ConstructorArgumentValues {
 	 * Return the map of indexed argument values.
 	 * @return unmodifiable Map with Integer index as key and ValueHolder as value
 	 * @see ValueHolder
+	 * 返回一个不能修改的map
 	 */
 	public Map<Integer, ValueHolder> getIndexedArgumentValues() {
 		return Collections.unmodifiableMap(this.indexedArgumentValues);
@@ -233,6 +234,7 @@ public class ConstructorArgumentValues {
 	 * Add a generic argument value, merging the new value (typically a collection)
 	 * with the current value if demanded: see {@link org.springframework.beans.Mergeable}.
 	 * @param newValue the argument value in the form of a ValueHolder
+	 *                 添加或合并
 	 */
 	private void addOrMergeGenericArgumentValue(ValueHolder newValue) {
 		if (newValue.getName() != null) {
