@@ -69,12 +69,14 @@ public class ConstructorArgumentValues {
 	 * <p>Note: Identical ValueHolder instances will only be registered once,
 	 * to allow for merging and re-merging of argument value definitions. Distinct
 	 * ValueHolder instances carrying the same content are of course allowed.
+	 * 拷贝构造函数的参数
 	 */
 	public void addArgumentValues(@Nullable ConstructorArgumentValues other) {
 		if (other != null) {
 			other.indexedArgumentValues.forEach(
 				(index, argValue) -> addOrMergeIndexedArgumentValue(index, argValue.copy())
 			);
+			//过滤掉存在的然后添加或合并
 			other.genericArgumentValues.stream()
 					.filter(valueHolder -> !this.genericArgumentValues.contains(valueHolder))
 					.forEach(valueHolder -> addOrMergeGenericArgumentValue(valueHolder.copy()));
@@ -96,6 +98,7 @@ public class ConstructorArgumentValues {
 	 * @param index the index in the constructor argument list
 	 * @param value the argument value
 	 * @param type the type of the constructor argument
+	 *  在指定地方添加或合并
 	 */
 	public void addIndexedArgumentValue(int index, @Nullable Object value, String type) {
 		addIndexedArgumentValue(index, new ValueHolder(value, type));
@@ -105,6 +108,7 @@ public class ConstructorArgumentValues {
 	 * Add an argument value for the given index in the constructor argument list.
 	 * @param index the index in the constructor argument list
 	 * @param newValue the argument value in the form of a ValueHolder
+	 * 在指定地方添加或合并
 	 */
 	public void addIndexedArgumentValue(int index, ValueHolder newValue) {
 		Assert.isTrue(index >= 0, "Index must not be negative");
@@ -118,9 +122,12 @@ public class ConstructorArgumentValues {
 	 * if demanded: see {@link org.springframework.beans.Mergeable}.
 	 * @param key the index in the constructor argument list
 	 * @param newValue the argument value in the form of a ValueHolder
+	 *  添加或合并值
 	 */
 	private void addOrMergeIndexedArgumentValue(Integer key, ValueHolder newValue) {
+		//查询原来的
 		ValueHolder currentValue = this.indexedArgumentValues.get(key);
+		//判断是否可以合并
 		if (currentValue != null && newValue.getValue() instanceof Mergeable) {
 			Mergeable mergeable = (Mergeable) newValue.getValue();
 			if (mergeable.isMergeEnabled()) {
@@ -133,6 +140,7 @@ public class ConstructorArgumentValues {
 	/**
 	 * Check whether an argument value has been registered for the given index.
 	 * @param index the index in the constructor argument list
+	 *             查询某个位置的参数是否存在值
 	 */
 	public boolean hasIndexedArgumentValue(int index) {
 		return this.indexedArgumentValues.containsKey(index);
@@ -144,6 +152,7 @@ public class ConstructorArgumentValues {
 	 * @param requiredType the type to match (can be {@code null} to match
 	 * untyped values only)
 	 * @return the ValueHolder for the argument, or {@code null} if none set
+	 * 获取指定位置的参数 requiredType:匹配的类型
 	 */
 	@Nullable
 	public ValueHolder getIndexedArgumentValue(int index, @Nullable Class<?> requiredType) {
